@@ -2,6 +2,10 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+//vuesax
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+
 const router = useRouter()
 
 let form = reactive({
@@ -29,12 +33,13 @@ const login = async () => {
         <div class="formLogin">
             <p class="text-danger" v-if="error">{{ error }}</p>
             <form  @submit.prevent="login">
-
-                <input type="email" placeholder="Enter your email " v-model="form.email" />
+                <label class="label"> Email</label>
+                <input class="input_auth" type="email" placeholder="Enter your email " v-model="form.email" />
                 <br>
-                <input type="password" placeholder="Enter your password " v-model="form.password" />
+                <label class="label"> Password</label>
+                <input class="input_auth" type="password" placeholder="Enter your password " v-model="form.password" />
                 <br>
-                <input type="submit" value="Login" class="submit">
+                <input  type="submit" value="Login" class="input_auth submit">
 
             </form>
         </div>
@@ -42,12 +47,27 @@ const login = async () => {
 </template>
 
 <style>
+
+    
+
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Fira sans', sans-serif;
         font-size: 16px;
+    }
+    
+    .label{
+        background: rgba(228, 232, 243, 0.8);
+        background-position: 0.5em 0.6em;
+        border: none;
+        padding: 0 0 0 4rem;
+        margin: 0 0 lem 0;
+        width: 20em;
+        height: 2.8em;
+        outline: none;
+        transition: background-color 0.4s;
     }
 
     .login {
@@ -67,7 +87,7 @@ const login = async () => {
         overflow: hidden;
     }
 
-    input {
+    .input_auth {
         background: rgba(228, 232, 243, 0.8);
         background-position: 0.5em 0.6em;
         border: none;
@@ -79,11 +99,11 @@ const login = async () => {
         transition: background-color 0.4s;
     }
 
-    input:hover {
+    .input_auth:hover {
         background-color: rgba(255, 255, 255, 255);
     }
 
-    input:focus {
+    .input_auth:focus {
         background-color: rgba(255, 255, 255, 255);
 
     }

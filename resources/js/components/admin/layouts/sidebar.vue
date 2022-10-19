@@ -7,24 +7,24 @@
                 </span>
                 <ul class="nav_list">
                     <li class="nav_item">
-                        <a class="nav_link nav__active" href="#">
+                        <router-link to="/admin/home" class="nav_link nav__active" href="#">
                             <span class="nav_link--span--icon">
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                             <span class="nav_link--span--navname">
                                 Home
                             </span>
-                        </a>
+                        </router-link>
                     </li>
                     <li class="nav_item">
-                        <a class="nav_link " href="about.html">
+                        <router-link to="/admin/about" class="nav_link " href="about.html">
                             <span class="nav_link--span--icon">
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                             <span class="nav_link--span--navname">
                                 About Us
                             </span>
-                        </a>
+                       </router-link>
                     </li>
                     <li class="nav_item">
                         <a class="nav_link " href="service.html">
@@ -97,14 +97,14 @@
                         </a>
                     </li>
                     <li class="nav_item">
-                        <a class="nav_link " href="#">
+                    <router-link to="/admin/user" class="nav_link " href="#">
                             <span class="nav_link--span--icon">
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                             <span class="nav_link--span--navname">
                                 Users
                             </span>
-                        </a>
+                        </router-link>
                     </li>
                     <li class="nav_item">
                         <a class="nav_link " href="#">

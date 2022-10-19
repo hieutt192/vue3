@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 
 //admin
 import homeAdminIndex from '../components/admin/home/index.vue'
+import homeAboutIndex from '../components/admin/about/index.vue'
+import UserIndex from '../components/admin/user/index.vue'
+
 //page
 import homePageIndex from '../components/pages/home/index.vue'
 //login
@@ -20,6 +23,27 @@ const routes = [
             requiresAuth:true
         }
     },
+
+    {
+        path: '/admin/about',
+        name: 'adminAbout',
+        component: homeAboutIndex,
+        meta:{
+            requiresAuth:true
+        }
+    },
+
+    {
+        path: '/admin/user',
+        name: 'adminUser',
+        component: UserIndex,
+        meta:{
+            requiresAuth:true
+        }
+    },
+
+
+
 
     //Pages
     {
