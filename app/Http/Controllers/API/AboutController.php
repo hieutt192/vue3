@@ -39,7 +39,7 @@ class AboutController extends Controller
             } else {
                 $name = $about->photo;
             }
-            
+
         }
 
         if ($about->cv != $request->cv ) {
@@ -56,7 +56,7 @@ class AboutController extends Controller
             } else {
                 $namecv = $about->cv;
             }
-            
+
         }
 
 

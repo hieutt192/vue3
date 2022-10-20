@@ -13,7 +13,7 @@ let form = reactive({
     password: '',
 })
 
-let error = ref('')
+let errors = ref('')
 
 const login = async () => {
     await axios.post('/api/login', form)
@@ -22,113 +22,89 @@ const login = async () => {
                 localStorage.setItem('token',response.data.data.token)
                 router.push('/admin/home')
             } else {
-                error.value = response.data.message;
+                errors.value = response.data.message;
             }
         })
 }
 </script>
 
 <template>
-    <div class="login">
-        <div class="formLogin">
-            <p class="text-danger" v-if="error">{{ error }}</p>
-            <form  @submit.prevent="login">
-                <label class="label"> Email</label>
-                <input class="input_auth" type="email" placeholder="Enter your email " v-model="form.email" />
-                <br>
-                <label class="label"> Password</label>
-                <input class="input_auth" type="password" placeholder="Enter your password " v-model="form.password" />
-                <br>
-                <input  type="submit" value="Login" class="input_auth submit">
+    
+    <!-- new -->
+    <div id="backend-view">
+    <form @submit.prevent="login">
+      <h3>Login Here</h3>
+      <label for="email">Email</label>
+      <input type="text" id="email" v-model="form.email" />
+      <span v-if="errors.email" class="error">{{ errors.email[0] }}</span>
 
-            </form>
-        </div>
-    </div>
+      <label for="password">Password</label>
+      <input type="password" id="password" v-model="form.password" />
+      <span v-if="errors.password" class="error">{{ errors.password[0] }}</span>
+
+      <button type="submit">Log In</button>
+      <span>Don't have an account?<router-link to="/register"> <a href="">Sign up</a></router-link></span>
+    </form>
+  </div>
+
 </template>
 
-<style>
+<style scoped>
 
-    
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Fira sans', sans-serif;
-        font-size: 16px;
+   
+    /* new */
+    #backend-view {
+  height: 100vh;
+  background-color: #f3f4f6;
+  display: grid;
+  align-items: center;
     }
-    
-    .label{
-        background: rgba(228, 232, 243, 0.8);
-        background-position: 0.5em 0.6em;
-        border: none;
-        padding: 0 0 0 4rem;
-        margin: 0 0 lem 0;
-        width: 20em;
-        height: 2.8em;
-        outline: none;
-        transition: background-color 0.4s;
+    form {
+    width: 400px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 35px;
     }
-
-    .login {
-        background: #6c5ce7;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        height: 100vh;
+    form * {
+    letter-spacing: 0.5px;
+    outline: none;
     }
 
-    .formLogin {
-        display: flex;
-        align-items: center;
-        width: 22.8em;
-        height: 55em;
-        margin: 0 auto 0 auto;
-        overflow: hidden;
+    label {
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    }
+    input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 300;
     }
 
-    .input_auth {
-        background: rgba(228, 232, 243, 0.8);
-        background-position: 0.5em 0.6em;
-        border: none;
-        padding: 0 0 0 4rem;
-        margin: 0 0 lem 0;
-        width: 20em;
-        height: 2.8em;
-        outline: none;
-        transition: background-color 0.4s;
+    button {
+    margin-top: 50px;
+    width: 100%;
+    background-color: rgba(0, 46, 173, 0.7);
+    color: #ffffff;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
     }
-
-    .input_auth:hover {
-        background-color: rgba(255, 255, 255, 255);
+    form span {
+    display: block;
+    margin-top: 35px;
     }
-
-    .input_auth:focus {
-        background-color: rgba(255, 255, 255, 255);
-
-    }
-
-    .submit {
-        color: rgba(35, 35, 35, 0.8);
-        background: rgba(220, 220, 220, 1);
-        padding: 0;
-        margin: 2.5em 0 0 5em;
-        width: 10em;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: background-color 0.4s;
-    }
-
-    .submit:hover {
-        background: #43467f;
-        color: #ffffff;
-    }
-
-    .submit:focus {
-        background: #43467f;
-        color: #ffffff;
-    }
-    .text-danger{
-        color: red;
+    a {
+    color: rgba(0, 46, 173, 0.8);
     }
 </style>

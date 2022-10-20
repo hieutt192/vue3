@@ -15,7 +15,7 @@
     })
 
     onMounted(async() => {
-        getAbout()    
+        getAbout()
     })
 
     const getAbout = async() => {
@@ -30,7 +30,7 @@
             if (form.value.photo.indexOf('base64') != -1) {
                 photo = form.value.photo
             } else {
-                photo = '/img/upload/' + form.value.photo
+                photo = "/img/upload/" + form.value.photo
             }
         }
 
@@ -45,7 +45,7 @@
             swal({
                 icon: 'error',
                 title: 'Opppss...',
-                text: 'You are Uploading a large file' 
+                text: 'You are Uploading a large file'
             })
 
             return false
@@ -66,7 +66,7 @@
             swal({
                 icon: 'error',
                 title: 'Opppss...',
-                text: 'You are Uploading a large file' 
+                text: 'You are Uploading a large file'
             })
 
             return false
@@ -94,11 +94,11 @@
     <Base/>
     <!--==================== MAIN ====================-->
     <main class="main">
-            
-            <div class="main__sideNav"></div>        
+
+            <div class="main__sideNav"></div>
             <!-- Main Content -->
             <div class="main__content">
-                
+
                  <!--==================== ABOUT ====================-->
             <section class="about section" id="about">
                 <div class="about_container">
@@ -110,14 +110,14 @@
                             <div class="btn btn-secondary" @click.prevent="updateAbout">
                                 Save Changes
                             </div>
-                        </div> 
+                        </div>
                     </div>
                     <div class="card_wrapper">
                         <div class="wrapper_left">
                             <div class="card">
                                 <p>Full Name</p>
                                 <input type="text" class="input" v-model="form.name" />
-                                
+
                                 <p>Email</p>
                                 <input type="email" class="input" v-model="form.email" />
 
@@ -126,32 +126,32 @@
 
                                 <p>Address</p>
                                 <input type="text" class="input" v-model="form.address" />
-        
+
                                 <p>Description</p>
                                 <textarea cols="10" rows="5" v-model="form.description" ></textarea>
-                                    
+
                             </div>
                             <div class="card">
                                 <p>Tagline</p>
-                                <input type="text" class="input"  v-model="form.tagline"/>     
+                                <input type="text" class="input"  v-model="form.tagline"/>
                             </div>
                         </div>
-                        
+
                         <div class="wrapper_right ">
                             <div class="card">
                                 <div class="avatar_profile">
                                  <img :src="getPhoto()" alt="" class="avatar_profile_img">
                                 </div>
-                                <input type="file" id="fileimg" @change="changePhoto"/>   
+                                <input type="file" id="fileimg" @change="changePhoto"/>
                             </div>
                             <div class="card">
                                 <p>CV</p>
-                                <input type="file" id="filecv" @change="uploadCV" />    
-                            </div>     
+                                <input type="file" id="filecv" @change="uploadCV" />
+                            </div>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </section>
 

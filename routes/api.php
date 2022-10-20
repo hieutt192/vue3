@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\AboutController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,10 @@ Route::controller(AboutController::class)->group(function(){
    
    Route::post('update_about/{id}','update_about');
     
+});
+
+
+Route::controller( UserController::class)->group(function (){
+    # code...
+    Route::get('/get_all_user','get_all_user');
 });
